@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  </head>
+  <body>
+    {% from "includes/_formhelpers.html" import render_field %}
+    <form method="POST" action="">
+      <div class="form-group">
+        {{render_field(form.commodity, class_="form-control")}}
+      </div>
+
+      <p><input type="submit" class="btn btn-primary" value="Submit"></p>
+
+      <select method="GET" name="selection" required default = "none">
+          <option></option>
+        {% for selection in selection %}
+              <option value="{{selection}}">{{selection}}</option>
+        {% endfor %}
+      </select>
+    </form>
+
+    <p>total expenses till now :</p>
+    <ul>
+     {{petrol1}}
+   </ul>
+   <ul>
+     {{grocery1}}
+   </ul>
+   <ul>
+     {{entertainment1}}
+   </ul>
+   <a href="/addfriends">
+   <button type="button" name="button">add</button></a>
+   <a href="/logout">
+   <button type="submit" name="button">Submit</button>
+ </a>
+  </body>
+</html>
