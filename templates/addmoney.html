@@ -2,6 +2,10 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <style>
+
+
+    </style>
     <title></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -16,37 +20,52 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="/" style = "color : white">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link active" href="#" style = "color : white">{{session.username}} <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link active" href="/logout" style = "color : white">Log out <span class="sr-only">(current)</span></a>
+       <a class="nav-item nav-link active" href="/logout" style = "color : white">Log out <span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link active" href="/addfriends" style = "color : white">Add Friend <span class="sr-only">(current)</span></a>
         </div>
   </div>
   </nav>
-
     <h1>Hello {{session.username}}!!!!!,welcome to the family of splitwise</h1>
-      <center>
-        <div class="card" style = "width : 25rem;height : 15rem;top : 7rem;">
-   <br>
-   <br>
-
+    <center>
+      <div class="card" style = "width : 20rem; height : 18rem; top:5rem;">
     <font color="red">{% include 'includes/_messages.html' %}</font>
+    <br>
       {% from "includes/_formhelpers.html" import render_field %}
-      <form method="POST" action="">
+      <form method="POST" >
         <div class="form-group" style="width:80%">
           {{render_field(form.friend, class_="form-control")}}
         </div>
-        <p><input type="submit" class="btn btn-primary" value="Add Friend"></p>
-
+        <div class="form-group" style = "width : 80%">
+          {{render_field(form.money, class_="form-control")}}
+        </div>
+        <input type="submit" class="btn btn-primary" value="Add Money">
+        <p></p>
       </form>
-        <a href="/addmoney"><button type="Submit" name="button" class = "btn btn-primary">Add Money</button></a>
-        <br>
-        <br>
-        <br>
-
-
-      {% for friend in friend_list %}
-       <p>{{friend}}</p>
-      {% endfor %}
       </div>
-</center>
+    </center>
+   {% if zipped_data %}
+     <table style="border : 1px solid black;">
+       <th style="border : 1px solid black;">
+         money to me:
+       </th>
+       <th style="border : 1px solid black;">
+         money to others:
+       </th>
+       <tr>
+
+         <td style="border : 1px solid black;">
+           {% for i,j in zipped_data %}
+               <p>{{i}} : {{j}}</p>
+           {% endfor %}
+         </td>
+         <td style = "top:420px;position:absolute">
+           {% for i,j in zipped_data1 %}
+               <p>{{i}} : {{j}}</p>
+           {% endfor %}
+         </td>
+       </tr>
+     </table>
+      {% endif %}
   </body>
 
 </html>

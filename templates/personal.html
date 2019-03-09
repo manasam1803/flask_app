@@ -7,36 +7,68 @@
 
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light" style = "background-color : #53236d">
+  <a class="navbar-brand" style = "color : white">Splitwise</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="/" style = "color : white">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="#" style = "color : white">{{session.username}} <span class="sr-only">(current)</span></a>
+      <a href="/logout" class="nav-item nav-link active" style = "color : white;float : left;">Log Out</a>
+        </div>
+  </div>
+  </nav>
+  <center>
+    <div class="card" style = "width:30rem;top : 5rem;">
+     <br>
+     <br>
     {% from "includes/_formhelpers.html" import render_field %}
     <form method="POST" action="">
-      <div class="form-group">
+      <div class="form-group" style="font-weight:bold;width:70%;position:relative;" >
         {{render_field(form.commodity, class_="form-control")}}
       </div>
 
       <p><input type="submit" class="btn btn-primary" value="Submit"></p>
-
-      <select method="GET" name="selection" required default = "none">
+    <label for = ""></label>
+      <select method="GET" name="selection"  required default = "none">
           <option></option>
         {% for selection in selection %}
               <option value="{{selection}}">{{selection}}</option>
         {% endfor %}
       </select>
+      <br>
+    <br>
     </form>
+    <div class="">
 
-    <p>total expenses till now :</p>
+
+    <a href="/addfriends">
+    <button type="button" name="button" class = "btn btn-primary">add Freinds</button></a>
+  </a>
+  <a href="/addmoney">
+  <button type="button" name="button" class = "btn btn-primary">add Money</button></a>
+</a>
+  </div>
+  <br>
+        </div>
+        <br>
+        <br>
+        <br>
+{% if petrol1 %}
+    <p>total expenses this month :</p>
     <ul>
-     {{petrol1}}
+    total petrol : {{petrol1}}
    </ul>
    <ul>
-     {{grocery1}}
+     total grocery : {{grocery1}}
    </ul>
    <ul>
-     {{entertainment1}}
+     total entertainment : {{entertainment1}}
    </ul>
-   <a href="/addfriends">
-   <button type="button" name="button">add</button></a>
-   <a href="/logout">
-   <button type="submit" name="button">Submit</button>
- </a>
+   {% endif %}
+
+</center>
   </body>
 </html>
